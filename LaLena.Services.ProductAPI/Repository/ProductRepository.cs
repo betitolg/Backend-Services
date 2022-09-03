@@ -29,17 +29,13 @@ namespace LaLena.Services.ProductAPI.Repository
             if (product.ProductId > 0)
             {
                 _db.Products.Update(product);
-
             }
-            else {
-
-
+            else
+            {
                 _db.Products.Add(product);
             }
 
-
             await _db.SaveChangesAsync();
-
             return _mapper.Map<Product, ProductDto>(product);
         }
 
@@ -49,8 +45,8 @@ namespace LaLena.Services.ProductAPI.Repository
             {
                 Product product = await _db.Products.FirstOrDefaultAsync(u => u.ProductId == productId);
 
-                if (product == null) {
-
+                if (product == null)
+                {
                     return false;
                 }
 
@@ -58,12 +54,9 @@ namespace LaLena.Services.ProductAPI.Repository
                 await _db.SaveChangesAsync();
 
                 return true;
-
-
             }
             catch (Exception)
             {
-
                 return false;
             }
         }
@@ -77,7 +70,7 @@ namespace LaLena.Services.ProductAPI.Repository
         public async Task<IEnumerable<ProductDto>> GetProducts()
         {
 
-            List <Product> productList= await _db.Products.ToListAsync();
+            List<Product> productList = await _db.Products.ToListAsync();
             return _mapper.Map<List<ProductDto>>(productList);
 
 

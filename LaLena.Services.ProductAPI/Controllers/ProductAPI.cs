@@ -26,19 +26,11 @@ namespace LaLena.Services.ProductAPI.Controllers
 
             try
             {
-
-
                 IEnumerable<ProductDto> productDtos = await _productRepository.GetProducts();
-
                 _response.IsSuccess = true;
                 _response.Result = productDtos;
-
-
-
+                _response.DisplayMessage = "";
             }
-
-
-
 
             catch (Exception ex)
             {
@@ -60,6 +52,7 @@ namespace LaLena.Services.ProductAPI.Controllers
 
                 _response.IsSuccess = true;
                 _response.Result = productDto;
+                _response.DisplayMessage = "";
             }
             catch (Exception ex)
             {
@@ -79,6 +72,7 @@ namespace LaLena.Services.ProductAPI.Controllers
 
                 _response.IsSuccess = true;
                 _response.Result = productDto;
+                _response.DisplayMessage = "";
             }
             catch (Exception ex)
             {
@@ -98,6 +92,7 @@ namespace LaLena.Services.ProductAPI.Controllers
 
                 _response.IsSuccess = true;
                 _response.Result = productDto;
+                _response.DisplayMessage = "";
             }
             catch (Exception ex)
             {
@@ -114,8 +109,8 @@ namespace LaLena.Services.ProductAPI.Controllers
             try
             {
                 bool isSuccess = await _productRepository.DeleteProduct(id);
-
                 _response.IsSuccess = isSuccess;
+                _response.DisplayMessage = "";
 
             }
             catch (Exception ex)

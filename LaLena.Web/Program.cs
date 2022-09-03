@@ -1,7 +1,15 @@
-var builder = WebApplication.CreateBuilder(args);
+using LaLena.Web;
+using LaLena.Web.Services;
+using LaLena.Web.Services.IServices;
 
+var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient<IProductService, ProductService>();
+SD.ProductAPIBase = configuration["ServicesUrls:ProductAPI"];
+builder.Services.AddScoped<IProductService, ProductService>();
+
 
 var app = builder.Build();
 
